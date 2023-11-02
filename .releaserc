@@ -1,0 +1,51 @@
+{
+  "branches": ["master"],
+  "repositoryUrl": "https://github.com/csye7125-fall2023-group05/infra-helm-chart.git",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "semantic-release-helm",
+      {
+        "chartPath": "./",
+        "onlyUpdateVersion": true
+      }
+    ],
+    [
+      "@semantic-release/git", {
+      "assets": [
+        {"path": "./Chart.yaml"},
+        {"path": "./CHANGELOG.md"}
+      ]
+    }],
+    "@semantic-release/github"
+  ],
+  "release": {
+    "verifyConditions": {
+      "path": ["@semantic-release/changelog", "@semantic-release/github", "@semantic-release/git"]
+    },
+    "analyzeCommits": [
+      "@semantic-release/commit-analyzer"
+    ],
+    "generateNotes": [
+      "@semantic-release/release-notes-generator", {
+        "preset": "angular",
+        "writerOpts": {
+          "commitsSort": ["header"]
+        }
+      }
+    ],
+    "prepare": [
+      "semantic-release-helm",
+      "@semantic-release/git",
+      {
+        "path": "@semantic-release/changelog",
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    "publish": "@semantic-release/github",
+    "success": "@semantic-release/github",
+    "fail": "@semantic-release/github"
+  }
+}

@@ -1,0 +1,27 @@
+name: Helm Chart Validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    name: Helm Chart Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Linting the Helm Chart
+        run: |
+          pwd
+          helm lint .
+        shell: bash
+
+      - name: Generate a template
+        run: |
+          pwd
+          cd ../
+          helm template webapp-helm-chart
+        shell: bash
