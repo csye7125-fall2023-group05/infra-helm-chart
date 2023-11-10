@@ -28,10 +28,12 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -46,7 +48,8 @@ service:
 ingress:
   enabled: false
   className: ""
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -59,7 +62,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -96,3 +100,34 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+kafka:
+  listeners:
+    client:
+      protocol: PLAINTEXT
+    controller:
+      protocol: PLAINTEXT
+    interbroker:
+      protocol: PLAINTEXT
+    external:
+      protocol: PLAINTEXT
+  controller:
+    replicaCount: 0
+  broker:
+    replicaCount: 3
+    persistence:
+      size: 1Gi
+  # externalAccess:
+  #   enabled: true
+  #   autoDiscovery:
+  #     enabled: true
+  serviceAccount:
+    create: false
+  # rbac:
+  #   create: true
+  kraft:
+    enabled: false
+  zookeeper:
+    enabled: true
+    persistence:
+      size: 1Gi
