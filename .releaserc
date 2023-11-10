@@ -42,6 +42,10 @@
       {
         "path": "@semantic-release/changelog",
         "changelogFile": "CHANGELOG.md"
+      },
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "git push --tags"
       }
     ],
     "publish": "@semantic-release/github",
