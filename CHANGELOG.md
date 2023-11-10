@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.0.0...v1.1.0) (2023-11-10)
+
+
+### Features
+
+* add provisioner logic to kafka dependency chart ([9bf1622](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/9bf1622907d6806b1fb082096dbb15a9568c64d0))
+
 # 1.0.0 (2023-11-10)
 
 
