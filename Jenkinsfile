@@ -23,6 +23,7 @@ pipeline {
           npm install semantic-release-helm
           npm install @semantic-release/git
           npm install @semantic-release/github
+          npm install @semantic-release/exec
           npx semantic-release
           '''
       }
