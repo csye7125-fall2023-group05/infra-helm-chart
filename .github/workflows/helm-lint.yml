@@ -23,5 +23,5 @@ jobs:
         run: |
           pwd
           cd ../
-          helm template webapp-helm-chart
+          helm template infra-helm-chart
         shell: bash
