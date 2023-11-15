@@ -20,3 +20,7 @@ dependencies:
   - name: kafka
     version: 26.4.x
     repository: https://charts.bitnami.com/bitnami
+  - name: postgresql
+    version: 13.1.5
+    repository: https://charts.bitnami.com/bitnami
+    condition: psql.enabled

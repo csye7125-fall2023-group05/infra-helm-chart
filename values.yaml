@@ -101,6 +101,22 @@ tolerations: []
 
 affinity: {}
 
+psql:
+  version: "13.1.5"
+  repository: https://charts.bitnami.com/bitnami
+  enabled: true
+  image: postgres
+  tag: 14-alpine
+
+postgresql:
+  auth:
+    username: consumer_user
+    password: consumer@pswd
+    database: consumer
+  primary:
+    persistence:
+      size: 1Gi
+
 kafka:
   listeners:
     client:
