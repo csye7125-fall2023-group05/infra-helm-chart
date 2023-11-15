@@ -1,0 +1,2 @@
+# ignore values that are being used to deploy the helm chart
+values.yaml
