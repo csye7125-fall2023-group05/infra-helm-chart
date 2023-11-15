@@ -10,7 +10,10 @@ This makes use of [Bitnami's Kafka Helm Chart](https://github.com/bitnami/charts
 # Chart.yaml
 dependencies:
   - name: kafka
-    version: "26.4.x"
+    version: 26.4.x
+    repository: "https://charts.bitnami.com/bitnami"
+  - name: postgresql
+    version: 13.1.5
     repository: "https://charts.bitnami.com/bitnami"
 ```
 
@@ -25,6 +28,22 @@ helm dependency update
 
 ```yaml
 # values.yaml
+psql:
+  version: "13.1.5"
+  repository: https://charts.bitnami.com/bitnami
+  enabled: true
+  image: postgres
+  tag: 14-alpine
+
+postgresql:
+  auth:
+    username:
+    password:
+    database:
+  primary:
+    persistence:
+      size: 1Gi
+
 kafka:
   listeners:
     client:
