@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.1.0...v1.2.0) (2023-11-17)
+
+
+### Features
+
+* install bitnami/postgresql chart dependency ([b1bfd5a](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/b1bfd5a7447ec1c809dcb8d32f64fda11911bafd)), closes [#5](https://github.com/csye7125-fall2023-group05/infra-helm-chart/issues/5)
+
 # [1.1.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.0.0...v1.1.0) (2023-11-10)
 
 
