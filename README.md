@@ -103,3 +103,8 @@ Topic: healthcheck       TopicId: YcLqdlRVR6yF4kvdf6eXwg PartitionCount: 3      
   Topic: healthcheck       Partition: 1    Leader: 101     Replicas: 101   Isr: 101
   Topic: healthcheck       Partition: 2    Leader: 100     Replicas: 100   Isr: 100
 ```
+
+
+data:
+  username: Y29uc3VtZXJfdXNlcg==
+  password: Y29uc3VtZXJAcHN3ZA==
