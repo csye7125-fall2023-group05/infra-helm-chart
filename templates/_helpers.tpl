@@ -33,13 +33,8 @@ Create chart name and version as used by the chart label.
 {{/*
 Common labels
 */}}
-{{- define "infra-helm-chart.labels" -}}
-helm.sh/chart: {{ include "infra-helm-chart.chart" . }}
-{{ include "infra-helm-chart.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- define "infra-helm-chart.labels" }}
+app: {{ .Values.podLabel.app }}
 {{- end }}
 
 {{/*
@@ -48,6 +43,47 @@ Selector labels
 {{- define "infra-helm-chart.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "infra-helm-chart.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+
+{{/*
+ConfigMap data
+*/}}
+{{- define "infra-helm-chart.configData" }}
+  broker_0: "{{ .Release.Name }}-kafka-broker-0.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.configs.kafka_port }}"
+  broker_1: "{{ .Release.Name }}-kafka-broker-1.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.configs.kafka_port}}"
+  broker_2: "{{ .Release.Name }}-kafka-broker-2.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.configs.kafka_port}}"
+  dbhost: "{{ include "postgresql.v1.primary.fullname" .Subcharts.postgresql }}-0.{{ include "postgresql.v1.primary.svc.headless" .Subcharts.postgresql }}.{{ .Values.namespace }}.svc.cluster.local"
+  {{- with .Values.configs }}
+  db: {{ .db }}
+  dbport: {{ .dbport | quote }}
+  client_id: {{ .client_id }}
+  topic: {{ .topic }}
+  {{- end}}
+
+{{- end }}
+
+
+{{/*
+Secret data
+*/}}
+{{- define "infra-helm-chart.secretData" }}
+  {{- with .Values.secret }}
+  username: {{ .username | b64enc }}
+  password: {{ .password | b64enc }}
+  {{- end }}
+{{- end }}
+
+{{/*
+Deployment Strategy
+*/}}
+{{- define "infra-helm-chart.deployStrategy" }}
+{{- with .Values.deployStrat }}
+type: {{ .rolling }}
+rollingUpdate:
+  maxSurge: {{ .maxSurge }}
+  maxUnavailable: {{ .maxUnavailable}}
+{{- end }}
 {{- end }}
 
 {{/*

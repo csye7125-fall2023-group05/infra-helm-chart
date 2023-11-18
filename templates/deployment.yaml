@@ -2,71 +2,73 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "infra-helm-chart.fullname" . }}
-  labels:
-    {{- include "infra-helm-chart.labels" . | nindent 4 }}
+  namespace: {{ .Values.namespace }}
+  labels: {{ include "infra-helm-chart.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
-    matchLabels:
-      {{- include "infra-helm-chart.selectorLabels" . | nindent 6 }}
+    matchLabels: {{ include "infra-helm-chart.labels" . | nindent 6 }}
+  progressDeadlineSeconds: {{ .Values.progressDeadlineSeconds }}
+  minReadySeconds: {{ .Values.minReadySeconds }}
+  strategy: {{ include "infra-helm-chart.deployStrategy" . | indent 4 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      labels:
-        {{- include "infra-helm-chart.labels" . | nindent 8 }}
-	{{- with .Values.podLabels }}
-        {{- toYaml . | nindent 8 }}
-        {{- end }}
+      labels: {{ include "infra-helm-chart.labels" . | nindent 8 }}
     spec:
-      {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      serviceAccountName: {{ include "infra-helm-chart.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+        - name: {{ .Release.Name }}-robocop
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: {{ .Values.image.containerImg }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
-          volumeMounts:
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
-      {{- with .Values.volumes }}
-      volumes:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+          env:
+            - name: BROKER_0
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: broker_0
+            - name: BROKER_1
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: broker_1
+            - name: BROKER_2
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: broker_2
+            - name: CLIENT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: client_id
+            - name: TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: topic
+            - name: USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-secrets
+                  key: username
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-secrets
+                  key: password
+            - name: DBHOST
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: dbhost
+            - name: DBPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: dbport
+            - name: DB
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap
+                  key: db
