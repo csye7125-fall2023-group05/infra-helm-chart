@@ -12,7 +12,7 @@ image:
 
 imagePullSecrets:
   type: kubernetes.io/dockerconfigjson
-  dockerConfig:
+  dockerConfig: b2theS1tci1oYWNrZXItY2FsbS1kb3duCg==
 nameOverride: ""
 fullnameOverride: ""
 
@@ -36,7 +36,7 @@ configs:
 secret:
   type: Opaque
   username: consumer_user
-  password:
+  password: consumer@pswd
 
 # serviceAccount:
 #   # Specifies whether a service account should be created
@@ -81,7 +81,7 @@ psql:
 postgresql:
   auth:
     username: consumer_user
-    password:
+    password: consumer@pswd
     database: consumer
   primary:
     persistence:
