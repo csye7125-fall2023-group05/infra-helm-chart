@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.2.0...v1.3.0) (2023-11-18)
+
+
+### Bug Fixes
+
+* CI validation pipeline values.yaml ([d811952](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/d81195277960665e91c7c769f00b4d30aa080793))
+* remove secrets ([e2f0bc3](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/e2f0bc35c683e650949ff1326b2de127e6775b4d))
+
+
+### Features
+
+* add consumer app helm chart as root chart ([9991d32](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/9991d32d23f8301c8fb4a607b03586d665cd80cf)), closes [#8](https://github.com/csye7125-fall2023-group05/infra-helm-chart/issues/8) [#9](https://github.com/csye7125-fall2023-group05/infra-helm-chart/issues/9)
+
 # [1.2.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.1.0...v1.2.0) (2023-11-17)
 
 
