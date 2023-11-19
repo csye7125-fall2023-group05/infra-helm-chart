@@ -15,10 +15,16 @@ spec:
     metadata:
       labels: {{ include "infra-helm-chart.labels" . | nindent 8 }}
     spec:
+      initContainers:
+        - name: {{ .Chart.Name }}-init
+          image: {{ .Values.image.initContainerImg }}
+          args:
+            - sleep
+            - "80"
       imagePullSecrets:
         - name: {{ .Release.Name }}-robocop
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Chart.Name }}-consumer
           image: {{ .Values.image.containerImg }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:

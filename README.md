@@ -4,7 +4,7 @@ This helm chart is to deploy a highly reliable and highly available [Kafka](http
 
 This makes use of [Bitnami's Kafka Helm Chart](https://github.com/bitnami/charts/tree/main/bitnami/kafka) as a dependency.
 
-- Adding the `bitnami/kafka` chart as a dependency:
+- Adding the `bitnami/kafka` and `bitnami/postgresql` charts as a dependencies:
 
 ```yaml
 # Chart.yaml
@@ -20,11 +20,11 @@ dependencies:
 - Install/update dependencies:
 
 ```bash
-# adds the bitnami/kafka dependency chart in charts/ directory
+# adds the bitnami/kafka and bitnami/postgresql dependency charts in charts/ directory
 helm dependency update
 ```
 
-- The `values.yaml` overrides the configurations for the `kafka` dependency chart to create 3 brokers (along with other configurations).
+- The `values.yaml` overrides the configurations for the `kafka` and `postgresql` dependency charts to create 3 brokers and 1 postgres pod (along with other configurations).
 
 ```yaml
 # values.yaml
@@ -103,8 +103,3 @@ Topic: healthcheck       TopicId: YcLqdlRVR6yF4kvdf6eXwg PartitionCount: 3      
   Topic: healthcheck       Partition: 1    Leader: 101     Replicas: 101   Isr: 101
   Topic: healthcheck       Partition: 2    Leader: 100     Replicas: 100   Isr: 100
 ```
-
-
-data:
-  username: Y29uc3VtZXJfdXNlcg==
-  password: Y29uc3VtZXJAcHN3ZA==
