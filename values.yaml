@@ -6,6 +6,7 @@ replicaCount: 3
 
 image:
   containerImg: quay.io/pwncorp/consumer:latest
+  initContainerImg: busybox
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: latest
@@ -16,7 +17,7 @@ imagePullSecrets:
 nameOverride: ""
 fullnameOverride: ""
 
-namespace: webapp
+namespace: deps
 
 deployStrat:
   rolling: RollingUpdate
