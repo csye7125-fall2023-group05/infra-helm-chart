@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.3.0...v1.4.0) (2023-11-19)
+
+
+### Features
+
+* add busybox initContainer ([bd5f6ac](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/bd5f6ac3eccf44e6c7afa9421d4b7fbb870cd40b)), closes [#10](https://github.com/csye7125-fall2023-group05/infra-helm-chart/issues/10)
+
 # [1.3.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.2.0...v1.3.0) (2023-11-18)
 
 
