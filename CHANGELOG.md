@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.4.0...v1.5.0) (2023-11-20)
+
+
+### Bug Fixes
+
+* re-add podLabel ([042441e](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/042441e5d3387a2cd51c1b2fa9ccc74599419907))
+
+
+### Features
+
+* add initContainer configuration for flyway db migration ([e44f472](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/e44f4729c31af3e42346a09a280beafe675c71d2)), closes [#13](https://github.com/csye7125-fall2023-group05/infra-helm-chart/issues/13)
+
 # [1.4.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.3.0...v1.4.0) (2023-11-19)
 
 
