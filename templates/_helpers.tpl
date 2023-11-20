@@ -54,11 +54,13 @@ ConfigMap data
   broker_1: "{{ .Release.Name }}-kafka-broker-1.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.configs.kafka_port}}"
   broker_2: "{{ .Release.Name }}-kafka-broker-2.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.configs.kafka_port}}"
   dbhost: "{{ include "postgresql.v1.primary.fullname" .Subcharts.postgresql }}-0.{{ include "postgresql.v1.primary.svc.headless" .Subcharts.postgresql }}.{{ .Values.namespace }}.svc.cluster.local"
+  flyway_url: "jdbc:postgresql://{{ include "postgresql.v1.primary.fullname" .Subcharts.postgresql }}-0.{{  include "postgresql.v1.primary.svc.headless" .Subcharts.postgresql }}.{{ .Values.namespace }}.svc.cluster.local:{{ .Values.configs.dbport}}/{{ .Values.configs.db }}"
   {{- with .Values.configs }}
   db: {{ .db }}
   dbport: {{ .dbport | quote }}
   client_id: {{ .client_id }}
   topic: {{ .topic }}
+  app_dbschema: {{ .app_dbschema }}
   {{- end}}
 
 {{- end }}

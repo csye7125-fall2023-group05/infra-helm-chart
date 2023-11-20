@@ -2,20 +2,16 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 3
+replicaCount: 1
 
 image:
   containerImg: quay.io/pwncorp/consumer:latest
-  initContainerImg: busybox
+  initContainerImg: quay.io/pwncorp/migrate:latest
   pullPolicy: Always
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: latest
 
 imagePullSecrets:
   type: kubernetes.io/dockerconfigjson
   dockerConfig: b2theS1tci1oYWNrZXItY2FsbS1kb3duCg==
-nameOverride: ""
-fullnameOverride: ""
 
 namespace: deps
 
@@ -33,53 +29,23 @@ configs:
   topic: healthcheck
   db: consumer
   dbport: "5432"
+  app_dbschema: app
 
 secret:
   type: Opaque
   username: consumer_user
   password: consumer@pswd
 
-# serviceAccount:
-#   # Specifies whether a service account should be created
-#   create: true
-#   # Automatically mount a ServiceAccount's API credentials?
-#   automount: true
-#   # Annotations to add to the service account
-#   annotations: {}
-#   # The name of the service account to use.
-#   # If not set and create is true, a name is generated using the fullname template
-#   name: ""
-
-podAnnotations: {}
-
-podLabel:
-  app: consumer
-
-podSecurityContext:
-  {}
-  # fsGroup: 2000
-
-securityContext:
-  {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
-
 service:
   type: ClusterIP
   port: 80
 
 psql:
-  version: "13.1.5"
-  repository: https://charts.bitnami.com/bitnami
   enabled: true
-  image: postgres
-  tag: 14-alpine
 
 postgresql:
+  image:
+    tag: 15.5.0-debian-11-r5
   auth:
     username: consumer_user
     password: consumer@pswd
@@ -104,14 +70,8 @@ kafka:
     replicaCount: 3
     persistence:
       size: 1Gi
-  # externalAccess:
-  #   enabled: true
-  #   autoDiscovery:
-  #     enabled: true
   serviceAccount:
     create: false
-  # rbac:
-  #   create: true
   provisioning:
     enabled: true
     numPartitions: 3
