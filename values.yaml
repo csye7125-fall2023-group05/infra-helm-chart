@@ -36,6 +36,9 @@ secret:
   username: consumer_user
   password: consumer@pswd
 
+podLabel:
+  app: consumer
+
 service:
   type: ClusterIP
   port: 80
