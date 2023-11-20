@@ -20,5 +20,6 @@ To learn more about the release, try:
   $ helm get all {{ .Release.Name }}
 
 To list all the releases in all the namespaces, use:
+
   $ helm ls --all-namespaces -a
 
