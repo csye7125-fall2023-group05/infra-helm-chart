@@ -17,8 +17,8 @@ spec:
     spec:
       initContainers:
         - name: {{ .Chart.Name }}-init
-          image: {{ .Values.image.initContainerImg }}
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.initContainer.repository }}/{{ .Values.initContainer.name }}:{{ .Values.initContainer.tag }}"
+          imagePullPolicy: {{ .Values.initContainer.pullPolicy }}
           # set environment variables for flyway db migration
           env:
             - name: FLYWAY_URL
@@ -46,7 +46,7 @@ spec:
         - name: {{ .Release.Name }}-robocop
       containers:
         - name: {{ .Chart.Name }}-consumer
-          image: {{ .Values.image.containerImg }}
+          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: BROKER_0

@@ -5,8 +5,15 @@
 replicaCount: 1
 
 image:
-  containerImg: quay.io/pwncorp/consumer:latest
-  initContainerImg: quay.io/pwncorp/migrate:latest
+  repository: quay.io/pwncorp
+  name: consumer
+  tag: latest
+  pullPolicy: Always
+
+initContainer:
+  repository: quay.io/pwncorp
+  name: migrate
+  tag: latest
   pullPolicy: Always
 
 imagePullSecrets:
