@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.5.0...v1.6.0) (2023-11-22)
+
+
+### Features
+
+* update image specs as parts ([5e72db4](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/5e72db45657124aff41f9b894beeedb7ce287af0)), closes [#15](https://github.com/csye7125-fall2023-group05/infra-helm-chart/issues/15)
+
 # [1.5.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.4.0...v1.5.0) (2023-11-20)
 
 
