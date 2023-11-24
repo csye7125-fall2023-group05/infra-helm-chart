@@ -12,7 +12,7 @@ image:
 
 initContainer:
   repository: quay.io/pwncorp
-  name: migrate
+  name: initconsumer
   tag: latest
   pullPolicy: Always
 
