@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.6.0...v1.6.1) (2023-11-24)
+
+
+### Bug Fixes
+
+* update consumer init container image ([6685a5d](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/6685a5def2c298b5b7e1a1e36fbbcae0f894f161))
+
 # [1.6.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.5.0...v1.6.0) (2023-11-22)
 
 
