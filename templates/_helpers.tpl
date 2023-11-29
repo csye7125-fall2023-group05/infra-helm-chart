@@ -38,6 +38,13 @@ app: {{ .Values.podLabel.app }}
 {{- end }}
 
 {{/*
+DB labels
+*/}}
+{{- define "infra-helm-chart.db.labels" }}
+app: {{ .Values.postgresql.primary.podLabels.app }}
+{{- end }}
+
+{{/*
 Selector labels
 */}}
 {{- define "infra-helm-chart.selectorLabels" -}}
