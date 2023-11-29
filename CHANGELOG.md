@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.6.1...v1.7.0) (2023-11-29)
+
+
+### Features
+
+* adding network policy for consumer db ([d9c2fd3](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/d9c2fd35c842aaedea5801b5f5944aff3dcd5eec))
+
 ## [1.6.1](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.6.0...v1.6.1) (2023-11-24)
 
 
