@@ -48,6 +48,13 @@ spec:
         - name: {{ .Chart.Name }}-consumer
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory}}
+              cpu: {{ .Values.resources.requests.cpu}}
+            limits:
+              memory: {{ .Values.resources.limits.memory}}
+              cpu: {{ .Values.resources.limits.cpu}}
           env:
             - name: BROKER_0
               valueFrom:

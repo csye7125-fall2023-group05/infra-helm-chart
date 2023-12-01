@@ -50,6 +50,14 @@ service:
   type: ClusterIP
   port: 80
 
+resources:
+  limits:
+    memory: "512Mi"
+    cpu: "0.6"
+  requests:
+    memory: "128Mi"
+    cpu: "0.2"
+
 psql:
   enabled: true
 
@@ -67,6 +75,13 @@ postgresql:
       app: consumer-db
     podLabels:
       app: consumer-db
+    resources:
+      limits:
+        memory: "1024Mi"
+        cpu: "1"
+      requests:
+        memory: "512Mi"
+        cpu: "0.5"
 
 kafka:
   listeners:
@@ -84,6 +99,13 @@ kafka:
     replicaCount: 3
     persistence:
       size: 1Gi
+    resources:
+      limits:
+        memory: "1024Mi"
+        cpu: "1"
+      requests:
+        memory: "512Mi"
+        cpu: "0.5"
   serviceAccount:
     create: false
   provisioning:
