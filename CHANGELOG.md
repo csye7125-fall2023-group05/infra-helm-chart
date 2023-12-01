@@ -1,3 +1,15 @@
+# [1.8.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.7.0...v1.8.0) (2023-12-01)
+
+
+### Bug Fixes
+
+* update cpu limits and requests to consumer app ([726552e](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/726552eeac29f9ad880cb8a4d172f5f1d537f5d9))
+
+
+### Features
+
+* add resource limits to consumer, kafka brokers and namespace ([183f551](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/183f551d21129c9b99ffc711203123e9bd80a45d))
+
 # [1.7.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.6.1...v1.7.0) (2023-11-29)
 
 
