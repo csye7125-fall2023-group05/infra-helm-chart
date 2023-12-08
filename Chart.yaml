@@ -2,7 +2,7 @@ apiVersion: v2
 name: infra-helm-chart
 description: A Helm chart for Kubernetes to install dependencies
 type: application
-version: 1.8.0
+version: 1.8.1
 appVersion: 1.16.0
 home: https://github.com/csye7125-fall2023-group05/infra-helm-chart
 keywords:

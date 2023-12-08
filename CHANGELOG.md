@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.8.0...v1.8.1) (2023-12-08)
+
+
+### Bug Fixes
+
+* disable istio for kafka provisioning pod ([8b52696](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/8b52696331ca337b642d73f4b0c27df996078ff2))
+
 # [1.8.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.7.0...v1.8.0) (2023-12-01)
 
 
