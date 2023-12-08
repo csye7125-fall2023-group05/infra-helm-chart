@@ -61,6 +61,15 @@ resources:
 psql:
   enabled: true
 
+istio:
+  namespace: istio-system
+  port:
+    kafka_port: 9094
+  hostname:
+    kafka_broker_0: infra-helm-release-kafka-broker-0.infra-helm-release-kafka-broker-headless.deps.svc.cluster.local
+    kafka_broker_1: infra-helm-release-kafka-broker-1.infra-helm-release-kafka-broker-headless.deps.svc.cluster.local
+    kafka_broker_2: infra-helm-release-kafka-broker-2.infra-helm-release-kafka-broker-headless.deps.svc.cluster.local
+
 postgresql:
   image:
     tag: 15.5.0-debian-11-r5
@@ -112,6 +121,8 @@ kafka:
     enabled: true
     numPartitions: 3
     replicationFactor: 1
+    podAnnotations:
+      sidecar.istio.io/inject: "false"
     topics:
       - name: healthcheck
         partitions: 3
@@ -119,8 +130,6 @@ kafka:
         config:
           max.message.bytes: 64000
           flush.messages: 1
-    podAnnotations:
-      sidecar.istio.io/inject: "false"
   kraft:
     enabled: false
   zookeeper:
