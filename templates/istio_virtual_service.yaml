@@ -5,28 +5,28 @@ metadata:
   namespace: {{ .Values.istio.namespace }}
 spec:
   hosts:
-  - {{ .Values.istio.hostname.kafka_broker_0 }}
-  - {{ .Values.istio.hostname.kafka_broker_1 }}
-  - {{ .Values.istio.hostname.kafka_broker_2 }}
+  - {{ .Release.Name }}-kafka-broker-0.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local
+  - {{ .Release.Name }}-kafka-broker-1.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local
+  - {{ .Release.Name }}-kafka-broker-2.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local
   tcp:
   - match:
-    - port: {{ .Values.istio.port.kafka_port }}  # to match the gateway port basically to bind this to gateway
+    - port: {{ .Values.configs.kafka_port}}  # to match the gateway port basically to bind this to gateway
     route:
     - destination:
-        host: {{ .Values.istio.hostname.kafka_broker_0 }}
+        host: {{ .Release.Name }}-kafka-broker-0.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local
         port:
-          number: {{ .Values.istio.port.kafka_port }}
+          number: {{ .Values.configs.kafka_port}}
   - match:
-    - port: {{ .Values.istio.port.kafka_port }}  # to match the gateway port basically to bind this to gateway
+    - port: {{ .Values.configs.kafka_port}}  # to match the gateway port basically to bind this to gateway
     route:
     - destination:
-        host: {{ .Values.istio.hostname.kafka_broker_1 }}
+        host: {{ .Release.Name }}-kafka-broker-1.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local
         port:
-          number: {{ .Values.istio.port.kafka_port }}
+          number: {{ .Values.configs.kafka_port}}
   - match:
-    - port: {{ .Values.istio.port.kafka_port }}  # to match the gateway port basically to bind this to gateway
+    - port: {{ .Values.configs.kafka_port}}  # to match the gateway port basically to bind this to gateway
     route:
     - destination:
-        host: {{ .Values.istio.hostname.kafka_broker_2 }}
+        host: {{ .Release.Name }}-kafka-broker-2.{{ .Release.Name }}-kafka-broker-headless.{{ .Values.namespace }}.svc.cluster.local
         port:
-          number: {{ .Values.istio.port.kafka_port }}
+          number: {{ .Values.configs.kafka_port}}
