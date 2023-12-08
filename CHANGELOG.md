@@ -1,3 +1,16 @@
+# [1.9.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.8.1...v1.9.0) (2023-12-08)
+
+
+### Bug Fixes
+
+* adding dynamic kafka port ([1291755](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/12917558db7738cd833015ebb9bf90e57c69e54c))
+* dynamic broker host FQDNS ([68fe120](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/68fe1200fda76dba8f4e92b70727be4e29a77d70))
+
+
+### Features
+
+* Add Istio Mesh Virtual Service ([55bddfb](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/55bddfbd1d11b6c3a91932ccd8c030ccab2cdf5e))
+
 ## [1.8.1](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.8.0...v1.8.1) (2023-12-08)
 
 
