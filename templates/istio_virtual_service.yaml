@@ -22,7 +22,7 @@ spec:
     - destination:
         host: {{ .Values.istio.hostname.kafka_broker_1 }}
         port:
-          number: 9094
+          number: {{ .Values.istio.port.kafka_port }}
   - match:
     - port: {{ .Values.istio.port.kafka_port }}  # to match the gateway port basically to bind this to gateway
     route:
