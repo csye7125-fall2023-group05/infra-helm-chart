@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.9.0...v1.10.0) (2023-12-09)
+
+
+### Features
+
+* add anti pod affinity for consumer app ([1c5213f](https://github.com/csye7125-fall2023-group05/infra-helm-chart/commit/1c5213f3d41159bed11d09c05d03ce5f8075899f))
+
 # [1.9.0](https://github.com/csye7125-fall2023-group05/infra-helm-chart/compare/v1.8.1...v1.9.0) (2023-12-08)
 
 
